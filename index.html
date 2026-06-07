@@ -463,6 +463,17 @@ nav {
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
+}
+.story-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+}
+.story-photo img:not([src]), .story-photo img[src=""] {
+  display: none;
 }
 .story-photo-label {
   font-size: 10px;
@@ -775,7 +786,8 @@ footer {
 <section class="story" id="story">
   <div class="story-grid">
     <div class="story-photo">
-      <div class="story-photo-label">Founder Photo</div>
+      <img src="assets/founder-romane.jpg" alt="Romane Armand, Founder &amp; Reading Specialist" onerror="this.removeAttribute('src'); this.nextElementSibling.style.display='block';">
+      <div class="story-photo-label" style="display:none;">Founder Photo</div>
     </div>
     <div>
       <div class="section-label">From The Founder</div>
