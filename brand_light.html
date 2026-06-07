@@ -1,0 +1,225 @@
+
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@800&family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', sans-serif; }
+  .rm-root { background: #F5F5F3; color: #0a0a0a; padding: 2rem; }
+  .rm-section { margin-bottom: 2.5rem; }
+  .rm-label { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: #111; margin-bottom: 0.75rem; font-weight: 500; }
+  .wordmark { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; line-height: 1; letter-spacing: -0.5px; }
+  .wm-the { color: #000; }
+  .wm-read { color: #FF0050; }
+  .wm-mix { color: #00CBBF; }
+  .rm-hero { display: flex; align-items: flex-start; justify-content: space-between; gap: 1.5rem; margin-bottom: 3rem; flex-wrap: wrap; }
+  .rm-tagline { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: #888; margin-top: 6px; }
+  .rm-essence { font-size: 14px; line-height: 1.7; color: #222; max-width: 400px; border-left: 3px solid #FF0050; padding-left: 1rem; }
+  .palette-row { display: flex; gap: 10px; flex-wrap: wrap; }
+  .swatch { flex: 1; min-width: 110px; border-radius: 8px; overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,0.08); }
+  .swatch-color { height: 80px; }
+  .swatch-info { padding: 10px 12px; background: #fff; }
+  .swatch-name { font-size: 12px; font-weight: 700; margin-bottom: 2px; }
+  .swatch-hex { font-size: 11px; color: #555; font-family: monospace; margin-bottom: 4px; }
+  .swatch-use { font-size: 10px; color: #777; line-height: 1.5; }
+  .palette-note { margin-top: 10px; background: #fff; border-radius: 6px; padding: 12px 16px; font-size: 11px; color: #666; line-height: 1.6; border-left: 3px solid #FF0050; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+  .palette-note strong { color: #111; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; display: block; margin-bottom: 4px; }
+  .type-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .type-card { background: #fff; border-radius: 8px; padding: 1.25rem; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
+  .type-sample-body { font-size: 13px; font-weight: 400; color: #444; line-height: 1.7; }
+  .type-meta { margin-top: 0.75rem; font-size: 11px; color: #333; }
+  .type-meta span { color: #FF0050; font-weight: 700; }
+  .type-meta-sub { margin-top: 4px; font-size: 11px; color: #555; }
+  .divider { height: 1px; background: #e8e8e4; margin: 2rem 0; }
+  .personality-row { display: flex; flex-wrap: wrap; gap: 8px; }
+  .pill { padding: 6px 16px; border-radius: 3px; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; font-weight: 700; }
+  .pill-red { background: #FF0050; color: #fff; }
+  .pill-cyan { background: #00CBBF; color: #fff; }
+  .never-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .never-item { background: #fff; border: 1px solid #eee; border-radius: 4px; padding: 10px 14px; font-size: 12px; color: #444; display: flex; align-items: flex-start; gap: 8px; box-shadow: 0 1px 2px rgba(0,0,0,0.04); }
+  .never-item::before { content: '✕'; color: #FF0050; font-size: 10px; font-weight: 900; flex-shrink: 0; margin-top: 2px; }
+  .comp-card { background: #fff; border: 1px solid #eee; border-left: 3px solid #00CBBF; border-radius: 4px; padding: 12px 16px; margin-bottom: 8px; font-size: 12px; color: #444; box-shadow: 0 1px 2px rgba(0,0,0,0.03); }
+  .comp-card strong { color: #111; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; display: block; margin-bottom: 4px; }
+  .ref-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; }
+  .ref-card { background: #fff; border-radius: 6px; padding: 14px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
+  .ref-brand { font-size: 13px; font-weight: 900; margin-bottom: 6px; }
+  .ref-take { font-size: 11px; color: #666; line-height: 1.5; }
+  .avoid-bar { margin-top: 10px; background: #fff; border-radius: 4px; padding: 10px 16px; font-size: 11px; color: #666; border-left: 3px solid #FF0050; }
+  .wm-block { border-radius: 8px; padding: 1.5rem 2rem; margin-bottom: 10px; }
+  .wm-label { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; margin-top: 8px; font-weight: 500; }
+</style>
+
+<div class="rm-root">
+
+  <div class="rm-hero">
+    <div>
+      <div class="wordmark" style="font-size: 62px;">
+        <span class="wm-the">The </span><span class="wm-read">Read</span><span class="wm-mix">Mix</span><sup style="font-size:0.3em; vertical-align:super; color:#000; font-family:'Inter',sans-serif; font-weight:500;">™</sup>
+      </div>
+      <div class="rm-tagline">Science of Reading · Powered by youth culture</div>
+    </div>
+    <div class="rm-essence">
+      An evidence-based literacy intervention platform powered by youth culture that gives school leaders a proven, engaging system to transform struggling readers into confident learners.
+    </div>
+  </div>
+
+  <div class="rm-section">
+    <div class="rm-label">Visual Personality</div>
+    <div class="personality-row">
+      <div class="pill pill-red">Dynamic</div>
+      <div class="pill pill-cyan">Precise</div>
+      <div class="pill pill-red">Bold</div>
+      <div class="pill pill-cyan">Hip-Hop</div>
+      <div class="pill pill-red">Clean</div>
+      <div class="pill pill-cyan">Purposeful</div>
+      <div class="pill pill-red">Alive</div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="rm-section">
+    <div class="rm-label">Colour Palette</div>
+    <div class="palette-row">
+      <div class="swatch">
+        <div class="swatch-color" style="background:#FF0050;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name" style="color:#FF0050;">Signal Red</div>
+          <div class="swatch-hex">#FF0050</div>
+          <div class="swatch-use">CTAs, headlines, accent marks. Deploy sparingly so it hits hard.</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#00F2EA;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name" style="color:#00CBBF;">Cyan Wave</div>
+          <div class="swatch-hex">#00F2EA</div>
+          <div class="swatch-use">Highlights, pull quotes, contrast elements. The answer to the red.</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#000;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name" style="color:#000;">Deep Black</div>
+          <div class="swatch-hex">#000000</div>
+          <div class="swatch-use">Primary text, dark accents, wordmark base. Anchors the system.</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#fff; border: 1px solid #eee;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name" style="color:#000;">Clean White</div>
+          <div class="swatch-hex">#FFFFFF</div>
+          <div class="swatch-use">Card surfaces, negative space. The silence between the beats.</div>
+        </div>
+      </div>
+    </div>
+    <div class="palette-note">
+      <strong>Palette Inspiration</strong>
+      Black and white nods to the composition notebook — the universal symbol of student writing. Red, white, and blue echoes the American flag — a reminder that literacy is not just an educational issue, it is a national one. The ReadMix palette holds both without executing either literally.
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="rm-section">
+    <div class="rm-label">Typography Direction</div>
+    <div class="type-row">
+      <div class="type-card">
+        <div class="wordmark" style="font-size: 40px;">
+          <span class="wm-the">The </span><span class="wm-read">Read</span><span class="wm-mix">Mix</span>
+        </div>
+        <div class="type-meta" style="margin-top:10px;"><span>Wordmark & Headings —</span> Barlow Condensed 800</div>
+        <div class="type-meta-sub">Tight, tall, commanding. Magazine masthead energy. Stops you mid-scroll.</div>
+      </div>
+      <div class="type-card">
+        <div class="type-sample-body">Struggling readers don't need sympathy. They need a system that works — built for the way they actually learn.</div>
+        <div class="type-meta" style="margin-top:10px;"><span>Body —</span> Inter Regular 400</div>
+        <div class="type-meta-sub">Legible at every size. Approachable without being soft.</div>
+      </div>
+    </div>
+    <div class="avoid-bar">Avoid: decorative fonts · script typefaces · slab serifs · anything that reads like a school newsletter from 2003</div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="rm-section">
+    <div class="rm-label">Compositional Rules</div>
+    <div class="comp-card"><strong>01 — One dominant element</strong>Every layout has a clear visual anchor. No visual tie games.</div>
+    <div class="comp-card"><strong>02 — Asymmetry with intention</strong>Layouts feel dynamic, not chaotic. Off-center is okay. Unbalanced is not.</div>
+    <div class="comp-card"><strong>03 — Let white breathe</strong>Light backgrounds are stages. Give elements room to perform.</div>
+    <div class="comp-card"><strong>04 — Type as design element</strong>Headlines can crop. Letters can anchor a layout. Words carry visual weight here.</div>
+    <div class="comp-card"><strong>05 — Colour lands like a punch</strong>Red and cyan are deployed, never decorative. Sparingly used so they always land.</div>
+    <div class="comp-card"><strong>06 — Grid is the backbone, not the cage</strong>Structure is followed — and broken when rhythm demands it.</div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="rm-section">
+    <div class="rm-label">Reference Aesthetic</div>
+    <div class="ref-row">
+      <div class="ref-card">
+        <div class="ref-brand" style="color:#FF0050;">TikTok</div>
+        <div class="ref-take">Take the pulse. High-contrast energy that makes you feel something real is happening — right now.</div>
+      </div>
+      <div class="ref-card">
+        <div class="ref-brand" style="color:#000;">HMH</div>
+        <div class="ref-take">Take the institutional credibility and clean curriculum-forward design. The ReadMix is its culturally fluent successor.</div>
+      </div>
+      <div class="ref-card">
+        <div class="ref-brand" style="color:#00CBBF;">Off-White</div>
+        <div class="ref-take">Take the proof: streetwear can carry intellectual weight. Culture and craft are not opposites.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="rm-section">
+    <div class="rm-label">What This Brand Is Never</div>
+    <div class="never-grid">
+      <div class="never-item">Corporate beige or trustworthy-blue defaults</div>
+      <div class="never-item">Condescending — the brand speaks to school leaders as partners</div>
+      <div class="never-item">Busy — every element must earn its place</div>
+      <div class="never-item">Dated — this brand lives in the present tense</div>
+      <div class="never-item">Soft — the mission is urgent, the brand speaks with authority</div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="rm-section">
+    <div class="rm-label">Wordmark Variants</div>
+    <div class="wm-block" style="background:#F5F5F3; border: 1px solid #e8e8e4;">
+      <div class="wordmark" style="font-size:52px;">
+        <span class="wm-the">The </span><span class="wm-read">Read</span><span class="wm-mix">Mix</span>
+      </div>
+      <div class="wm-label" style="color:#bbb;">Light background — primary</div>
+    </div>
+    <div class="wm-block" style="background:#000;">
+      <div class="wordmark" style="font-size:52px;">
+        <span style="color:#fff;">The </span><span class="wm-read">Read</span><span style="color:#00F2EA;">Mix</span>
+      </div>
+      <div class="wm-label" style="color:#444;">Dark background</div>
+    </div>
+    <div class="wm-block" style="background:#FF0050;">
+      <div class="wordmark" style="font-size:52px; color:#fff;">The ReadMix</div>
+      <div class="wm-label" style="color:rgba(255,255,255,0.5);">Signal Red background</div>
+    </div>
+    <div class="wm-block" style="background:#00F2EA;">
+      <div class="wordmark" style="font-size:52px; color:#000;">The ReadMix</div>
+      <div class="wm-label" style="color:rgba(0,0,0,0.35);">Cyan Wave background</div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="rm-section">
+    <div class="rm-label">Business Card Spec — MOO Luxe</div>
+    <div class="comp-card"><strong>Paper Stock</strong>MOO Luxe — 600gsm, 4-layer, ultra-thick with colored seam. Natural uncoated feel.</div>
+    <div class="comp-card"><strong>Size</strong>Standard 3.5 × 2.0 in · Bleed: 3.75 × 2.25 in · Safe zone: 0.125 in from all edges</div>
+    <div class="comp-card"><strong>Front</strong>Black background (#000000) · Wordmark centered: "The" white, "Read" Signal Red, "Mix" Cyan Wave · ™ superscript in white · "Science of Reading" white · "Powered by Youth Culture" in Cyan Wave · Split accent bar bottom: red left, cyan right</div>
+    <div class="comp-card"><strong>Back</strong>Black background · Left side bar: red top half, cyan bottom half · Name in Cyan Wave · Role in white · Email + phone in white · Website (TheReadMix.ai) in Signal Red · Split accent bar bottom</div>
+    <div class="comp-card"><strong>Contact</strong>Romane Armand · Founder &amp; Reading Specialist · ro@thereadmix.com · 470-210-1804 · TheReadMix.ai</div>
+    <div class="comp-card"><strong>Print Notes</strong>Upload Front and Back as separate files to MOO. Enable Background Graphics when printing to PDF from Chrome. Minimum order: 50 cards. New customer discount: 20% off first order via MOO newsletter signup.</div>
+  </div>
+
+
+</div>
