@@ -510,6 +510,70 @@ nav {
   letter-spacing: 0.05em;
 }
 
+/* ── STORY VIDEO (vertical / YouTube Short) ── */
+.story-video-wrap { margin-top: 2rem; max-width: 300px; }
+.story-video-label {
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+.story-video {
+  position: relative;
+  aspect-ratio: 9 / 16;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #0a0a0a;
+  cursor: pointer;
+  border: 1px solid #E0E0DC;
+}
+.story-video img,
+.story-video iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  object-fit: cover;
+  display: block;
+}
+.story-video .play-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: var(--red);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 24px rgba(0,0,0,0.35);
+  transition: transform 0.15s ease, background 0.15s ease;
+  z-index: 2;
+}
+.story-video:hover .play-btn { transform: translate(-50%, -50%) scale(1.08); }
+.story-video .play-btn::after {
+  content: "";
+  margin-left: 4px;
+  border-style: solid;
+  border-width: 11px 0 11px 18px;
+  border-color: transparent transparent transparent #fff;
+}
+.story-video::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0) 55%, rgba(0,0,0,0.45) 100%);
+  z-index: 1;
+  pointer-events: none;
+}
+.story-video.playing::before,
+.story-video.playing .play-btn { display: none; }
+
 /* ── CREDIBILITY ── */
 .cred {
   padding: 4rem 3rem;
@@ -801,9 +865,44 @@ footer {
       <p class="story-body">Before The ReadMix was a curriculum, it was a kid who couldn't keep up — until the right system, at the right moment, changed everything. That experience became the blueprint for a literacy program built for students who learn differently, live loudly, and deserve a system that meets them where they are.</p>
       <div class="story-name">Romane Armand</div>
       <div class="story-role">Founder &amp; Reading Specialist</div>
+
+      <div class="story-video-wrap">
+        <div class="story-video-label">Watch The Origin Story</div>
+        <div class="story-video" data-yt="ftsmjydeJoA" role="button" tabindex="0"
+             aria-label="Play the origin story video">
+          <img src="https://i.ytimg.com/vi/ftsmjydeJoA/maxresdefault.jpg"
+               alt="The ReadMix origin story"
+               loading="lazy"
+               onerror="this.src='https://i.ytimg.com/vi/ftsmjydeJoA/hqdefault.jpg';">
+          <span class="play-btn" aria-hidden="true"></span>
+        </div>
+      </div>
     </div>
   </div>
 </section>
+
+<script>
+  (function () {
+    function loadVideo(el) {
+      if (el.classList.contains('playing')) return;
+      var id = el.getAttribute('data-yt');
+      var iframe = document.createElement('iframe');
+      iframe.src = 'https://www.youtube-nocookie.com/embed/' + id +
+        '?autoplay=1&rel=0&playsinline=1';
+      iframe.allow = 'accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture';
+      iframe.setAttribute('allowfullscreen', '');
+      iframe.setAttribute('title', 'The ReadMix origin story');
+      el.appendChild(iframe);
+      el.classList.add('playing');
+    }
+    document.querySelectorAll('.story-video').forEach(function (el) {
+      el.addEventListener('click', function () { loadVideo(el); });
+      el.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); loadVideo(el); }
+      });
+    });
+  })();
+</script>
 
 <!-- ── CREDIBILITY ── -->
 <section class="cred">
