@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The ReadMix™ — Close Reading Gaps. Unlock Student Genius.</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --red: #FF0050;
+  --cyan: #00CBBF;
+  --cyan-dark: #00F2EA;
+  --black: #000000;
+  --off-black: #F5F5F3;
+  --surface: #FFFFFF;
+  --border: #E8E8E4;
+  --white: #FFFFFF;
+  --muted: #888;
+  --sub: #555;
+  --text: #0a0a0a;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--white);
+  color: var(--text);
+  overflow-x: hidden;
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 3rem;
+  height: 68px;
+  background: rgba(255,255,255,0.96);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+.nav-wm {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 800;
+  font-size: 28px;
+  line-height: 1;
+  letter-spacing: -0.5px;
+  text-decoration: none;
+}
+.wm-the  { color: #000; }
+.wm-read { color: var(--red); }
+.wm-mix  { color: var(--cyan); }
+.wm-tm   { font-size: 0.32em; vertical-align: super; color: #000; font-family: 'Inter', sans-serif; font-weight: 500; line-height: 0; }
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+}
+.nav-link {
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: #555;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.nav-link:hover { color: #000; }
+.nav-cta {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  font-weight: 700;
+  padding: 10px 22px;
+  background: var(--red);
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+.nav-cta:hover { opacity: 0.85; }
+
+/* ── HERO ── */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  text-align: left;
+  padding: 120px 4rem 80px;
+  position: relative;
+  overflow: hidden;
+}
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+/* Subtle grid pattern */
+.hero-bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(0,0,0,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,0,0,0.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+/* Radial glow */
+.hero-bg::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 900px;
+  height: 900px;
+  background: radial-gradient(circle, rgba(255,0,80,0.05) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero-content { position: relative; z-index: 1; max-width: 900px; width: 100%; }
+.hero-eyebrow {
+  font-size: 13.2px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--red);
+  margin-bottom: 1.5rem;
+  opacity: 0;
+  animation: fadeUp 0.6s ease forwards 0.2s;
+}
+.hero-h1 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 800;
+  font-size: clamp(48px, 7vw, 90px);
+  line-height: 0.95;
+  letter-spacing: -1px;
+  margin-bottom: 0.2em;
+  opacity: 0;
+  animation: fadeUp 0.7s ease forwards 0.4s;
+}
+.hero-h1 .line-1 { color: var(--black); display: block; }
+.hero-h1 .line-2 { color: #00CBBF; display: block; }
+.hero-h2 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 800;
+  font-size: clamp(36px, 6vw, 64px);
+  color: #00CBBF;
+  letter-spacing: -0.5px;
+  margin-bottom: 1.5rem;
+  opacity: 0;
+  animation: fadeUp 0.7s ease forwards 0.55s;
+}
+.nowrap { white-space: nowrap; }
+.hero-desc {
+  font-size: clamp(15px, 2vw, 18px);
+  font-weight: 300;
+  line-height: 1.7;
+  color: #555;
+  max-width: 540px;
+  margin: 0 0 2.5rem;
+  opacity: 0;
+  animation: fadeUp 0.7s ease forwards 0.7s;
+}
+.hero-cta-row {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  opacity: 0;
+  animation: fadeUp 0.7s ease forwards 0.85s;
+}
+.btn-primary {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 700;
+  padding: 16px 36px;
+  background: var(--red);
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+.btn-primary:hover { background: #e0003f; transform: translateY(-1px); }
+.btn-ghost {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 700;
+  padding: 16px 36px;
+  background: transparent;
+  color: #444;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+.btn-ghost:hover { border-color: #999; color: #000; }
+
+/* Hero image placeholder */
+.hero-image {
+  margin-top: 4rem;
+  width: 100%;
+  max-width: 700px;
+  aspect-ratio: 16/9;
+  background: #F0F0EE;
+  border-radius: 8px;
+  border: 1px solid #E0E0DC;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 12px;
+  opacity: 0;
+  animation: fadeUp 0.8s ease forwards 1s;
+  position: relative;
+  overflow: hidden;
+}
+.hero-image::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255,0,80,0.05), rgba(0,242,234,0.05));
+}
+.hero-image-label {
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-weight: 600;
+  position: relative;
+  z-index: 1;
+}
+.hero-image-sub {
+  font-size: 13px;
+  color: #999;
+  position: relative;
+  z-index: 1;
+}
+
+/* ── ACCENT DIVIDER ── */
+.accent-bar {
+  height: 5px;
+  background: linear-gradient(to right, var(--red) 50%, var(--cyan) 50%);
+}
+
+/* ── STAKES ── */
+.section-label {
+  font-size: 10px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+/* ── HOW IT WORKS ── */
+.how {
+  padding: 6rem 3rem;
+  max-width: 1100px;
+  margin: 0 auto;
+  background: #fff;
+}
+.how-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 3rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.how-headline {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 800;
+  font-size: clamp(32px, 5vw, 52px);
+  line-height: 1.05;
+  color: #0a0a0a;
+}
+.how-headline span { color: #00CBBF; }
+.how-steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  overflow: hidden;
+}
+.step {
+  background: #FAFAFA;
+  padding: 2.5rem 2rem;
+  position: relative;
+}
+.step-num {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 800;
+  font-size: 64px;
+  line-height: 1;
+  color: rgba(0,0,0,0.18);
+  position: absolute;
+  top: 1.25rem;
+  right: 1.5rem;
+}
+.step-icon {
+  width: 36px;
+  height: 3px;
+  margin-bottom: 1.5rem;
+}
+.step:nth-child(1) .step-icon { background: var(--red); }
+.step:nth-child(2) .step-icon { background: var(--cyan); }
+.step:nth-child(3) .step-icon { background: var(--black); }
+.step-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 800;
+  font-size: 28px;
+  margin-bottom: 0.75rem;
+  letter-spacing: -0.3px;
+}
+.step:nth-child(1) .step-title { color: var(--red); }
+.step:nth-child(2) .step-title { color: var(--cyan); }
+.step:nth-child(3) .step-title { color: var(--black); }
+.step-body {
+  font-size: 13px;
+  color: #555;
+  line-height: 1.7;
+}
+
+/* ── WHY IT WORKS ── */
+.why {
+  background: #F5F5F3;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 6rem 3rem;
+}
+.why-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.why-headline {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 800;
+  font-size: clamp(32px, 5vw, 52px);
+  margin-bottom: 3rem;
+  line-height: 1.05;
+  color: #0a0a0a;
+}
+.why-headline span { color: #00CBBF; }
+.why-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+.why-card {
+  background: #FFFFFF;
+  border: 0.5px solid var(--border);
+  border-radius: 6px;
+  padding: 2.5rem;
+}
+.why-card-tag {
+  font-size: 11.7px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 2px;
+}
+.why-card:nth-child(1) .why-card-tag { background: rgba(255,0,80,0.12); color: var(--red); }
+.why-card:nth-child(2) .why-card-tag { background: rgba(0,242,234,0.1); color: var(--cyan); }
+.why-card-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 800;
+  font-size: 26px;
+  margin-bottom: 1rem;
+  line-height: 1.1;
+}
+.why-card-body {
+  font-size: 13px;
+  line-height: 1.8;
+  color: #555;
+}
+
+/* ── OUR STORY ── */
+.story {
+  padding: 6rem 3rem;
+  max-width: 1100px;
+  margin: 0 auto;
+  background: #fff;
+}
+.story-grid {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+.story-grid--solo {
+  grid-template-columns: 1fr;
+  max-width: 640px;
+}
+.story-headline {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 800;
+  font-size: clamp(28px, 4.5vw, 44px);
+  line-height: 1.1;
+  margin-bottom: 1.25rem;
+  color: #0a0a0a;
+}
+.story-headline span { color: var(--red); }
+.story-body {
+  font-size: 14px;
+  line-height: 1.8;
+  color: #555;
+  margin-bottom: 1rem;
+}
+.story-name {
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: #0a0a0a;
+}
+.story-role {
+  font-size: 11px;
+  color: var(--muted);
+  letter-spacing: 0.05em;
+}
+
+/* ── STORY VIDEO (vertical / YouTube Short) ── */
+.story-video-wrap { margin-top: 2rem; max-width: 300px; }
+.story-video-label {
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+.story-video {
+  position: relative;
+  aspect-ratio: 9 / 16;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #0a0a0a;
+  cursor: pointer;
+  border: 1px solid #E0E0DC;
+}
+.story-video img,
+.story-video iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  object-fit: cover;
+  display: block;
+}
+.story-video .play-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: var(--red);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 24px rgba(0,0,0,0.35);
+  transition: transform 0.15s ease, background 0.15s ease;
+  z-index: 2;
+}
+.story-video:hover .play-btn { transform: translate(-50%, -50%) scale(1.08); }
+.story-video .play-btn::after {
+  content: "";
+  margin-left: 4px;
+  border-style: solid;
+  border-width: 11px 0 11px 18px;
+  border-color: transparent transparent transparent #fff;
+}
+.story-video::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0) 55%, rgba(0,0,0,0.45) 100%);
+  z-index: 1;
+  pointer-events: none;
+}
+.story-video.playing::before,
+.story-video.playing .play-btn { display: none; }
+
+/* ── TRANSFORMATION ── */
+.transform {
+  background: var(--red);
+  padding: 6rem 3rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.transform::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+.transform-inner { position: relative; z-index: 1; max-width: 700px; margin: 0 auto; }
+.transform-label {
+  font-size: 10px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: rgba(0,0,0,0.7);
+  margin-bottom: 1.5rem;
+}
+.transform-headline {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 800;
+  font-size: clamp(28px, 4.5vw, 52px);
+  line-height: 1.05;
+  color: #fff;
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.5px;
+}
+.transform-body {
+  font-size: 16px;
+  line-height: 1.7;
+  color: rgba(255,255,255,0.8);
+  margin-bottom: 2.5rem;
+  font-weight: 300;
+}
+.btn-white {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 700;
+  padding: 16px 40px;
+  background: #fff;
+  color: var(--red);
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.2s;
+  display: inline-block;
+}
+.btn-white:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.2); }
+.waitlist-form {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  max-width: 520px;
+  margin: 0 auto;
+}
+.waitlist-input {
+  flex: 1 1 260px;
+  min-width: 0;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  padding: 16px 20px;
+  border: none;
+  border-radius: 3px;
+  background: rgba(255,255,255,0.96);
+  color: #0a0a0a;
+}
+.waitlist-input::placeholder { color: #999; }
+.waitlist-input:focus { outline: 2px solid rgba(255,255,255,0.85); }
+.waitlist-form .btn-white { flex: 0 0 auto; }
+.waitlist-msg {
+  margin: 1.25rem 0 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+  min-height: 1.2em;
+}
+.waitlist-msg.error { color: #2b0008; }
+
+/* ── FOOTER ── */
+footer {
+  background: #F5F5F3;
+  border-top: 1px solid var(--border);
+  padding: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.footer-wm {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 800;
+  font-size: 22px;
+  text-decoration: none;
+}
+.footer-copy {
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.footer-links {
+  display: flex;
+  gap: 2rem;
+}
+.footer-link {
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--muted);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.2s;
+}
+.footer-link:hover { color: #000; }
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  nav { padding: 0 1.5rem; }
+  .nav-links { gap: 1.25rem; }
+  .how-steps, .why-grid, .story-grid { grid-template-columns: 1fr; }
+  footer { flex-direction: column; align-items: flex-start; }
+}
+
+@media (max-width: 540px) {
+  nav { padding: 0 1.25rem; height: auto; flex-wrap: wrap; gap: 0.75rem; padding-top: 0.75rem; padding-bottom: 0.75rem; }
+  .nav-links { gap: 1rem; flex-wrap: wrap; }
+  .nav-link { display: none; }
+  .hero { padding: 140px 1.5rem 60px; }
+  .hero-h1 { font-size: clamp(36px, 11vw, 64px); }
+  .hero-h2 { font-size: clamp(28px, 9vw, 48px); }
+  .hero-desc { max-width: 100%; }
+  .hero-cta-row { width: 100%; }
+  .hero-cta-row a { flex: 1 1 auto; text-align: center; }
+  .how, .why, .story, .transform { padding-left: 1.5rem; padding-right: 1.5rem; }
+  .how-headline, .why-headline { font-size: clamp(28px, 8vw, 40px); }
+}
+</style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav>
+  <a href="#" class="nav-wm">
+    <span class="wm-the">The </span><span class="wm-read">Read</span><span class="wm-mix">Mix</span><sup class="wm-tm">™</sup>
+  </a>
+  <div class="nav-links">
+    <a href="#story" class="nav-link">Our Story</a>
+    <a href="#research" class="nav-link">Our Approach</a>
+    <a href="#waitlist" class="nav-cta">Join Waitlist</a>
+  </div>
+</nav>
+
+<!-- ── HERO ── -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Science of Reading · Powered by Youth Culture</div>
+    <h1 class="hero-h1">
+      <span class="line-1">Close Reading Gaps.</span>
+      <span class="line-2">Unlock Student Genius.</span>
+    </h1>
+    <p class="hero-desc">The ReadMix is an evidence-based literacy intervention<br><span class="nowrap">for middle and high school students.</span></p>
+    <div class="hero-cta-row">
+      <a href="#waitlist" class="btn-primary">Join Waitlist</a>
+      <a href="#how" class="btn-ghost">See How It Works →</a>
+    </div>
+    <div style="margin: 2rem 0 0; position: relative; width: 460px; max-width: 100%;">
+      <picture>
+        <source srcset="assets/hero-student.webp" type="image/webp">
+        <img src="assets/hero-student.jpg"
+             style="width: 100%; height: auto; display: block;"
+             alt="Confident, engaged, thriving student">
+      </picture>
+    </div>
+  </div>
+</section>
+
+<div class="accent-bar"></div>
+
+<!-- ── HOW IT WORKS ── -->
+<section class="how" id="how">
+  <div class="how-header">
+    <div>
+      <div class="section-label">The System</div>
+      <h2 class="how-headline">How It <span>Works</span></h2>
+    </div>
+  </div>
+  <div class="how-steps">
+    <div class="step">
+      <div class="step-num">01</div>
+      <div class="step-icon"></div>
+      <div class="step-title">Deep Assessment</div>
+      <div class="step-body">We diagnose the root cause of reading struggles by assessing foundational skills like phonological awareness and phonics, not just vocabulary and comprehension.</div>
+    </div>
+    <div class="step">
+      <div class="step-num">02</div>
+      <div class="step-icon"></div>
+      <div class="step-title">Learning Plan</div>
+      <div class="step-body">We create a tailored learning roadmap with targeted word lists and reading passages to build foundational skills that stick.</div>
+    </div>
+    <div class="step">
+      <div class="step-num">03</div>
+      <div class="step-icon"></div>
+      <div class="step-title">Instruction</div>
+      <div class="step-body">Engage in teacher-led, structured literacy instruction supported by video, with exercises that drive measurable growth.</div>
+    </div>
+  </div>
+</section>
+
+<div class="accent-bar"></div>
+
+<!-- ── WHY IT WORKS ── -->
+<section class="why" id="research">
+  <div class="why-inner">
+    <div class="section-label">The Science & The Culture</div>
+    <h2 class="why-headline">Why It <span>Works</span></h2>
+    <div class="why-grid">
+      <div class="why-card">
+        <span class="why-card-tag">Science of Reading</span>
+        <div class="why-card-title">Grounded in How the Brain Learns to Read</div>
+        <div class="why-card-body">Aligned with the Science of Reading, we use the <strong>Orton-Gillingham</strong> approach to make instruction accessible to students with specific learning differences. This approach supports the one in five students with <strong>dyslexia</strong> who struggle the most.</div>
+      </div>
+      <div class="why-card">
+        <span class="why-card-tag">Youth Culture Pedagogy</span>
+        <div class="why-card-title">Teens Who Feel Seen Actually Learn</div>
+        <div class="why-card-body">Youth culture isn’t decoration, it’s the delivery system. When students see their language, identities, and interests reflected in the material, they’re not just engaged, they’re invested. That ownership transforms how they show up to learning.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── OUR STORY ── -->
+<section class="story" id="story">
+  <div class="story-grid story-grid--solo">
+    <div>
+      <div class="section-label">Our Story</div>
+      <h2 class="story-headline">A record-breaker who almost <span>never learned to read.</span></h2>
+      <p class="story-body">Before The ReadMix was a curriculum, it was a way for a functionally illiterate high school kid to play with words and escape the boredom of not being able to access grade level text. This personal breakthrough became the blueprint for a literacy program built for students who learn differently, love creativity, and deserve lessons that meet them where they are.</p>
+      <div class="story-name">Romane Armand</div>
+      <div class="story-role">Founder &amp; Reading Specialist</div>
+
+      <div class="story-video-wrap">
+        <div class="story-video-label">Watch The Origin Story</div>
+        <div class="story-video" data-yt="ftsmjydeJoA" role="button" tabindex="0"
+             aria-label="Play the origin story video">
+          <img src="https://i.ytimg.com/vi/ftsmjydeJoA/maxresdefault.jpg"
+               alt="The ReadMix origin story"
+               loading="lazy"
+               onerror="this.src='https://i.ytimg.com/vi/ftsmjydeJoA/hqdefault.jpg';">
+          <span class="play-btn" aria-hidden="true"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  (function () {
+    function loadVideo(el) {
+      if (el.classList.contains('playing')) return;
+      var id = el.getAttribute('data-yt');
+      var iframe = document.createElement('iframe');
+      iframe.src = 'https://www.youtube-nocookie.com/embed/' + id +
+        '?autoplay=1&rel=0&playsinline=1';
+      iframe.allow = 'accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture';
+      iframe.setAttribute('allowfullscreen', '');
+      iframe.setAttribute('title', 'The ReadMix origin story');
+      el.appendChild(iframe);
+      el.classList.add('playing');
+    }
+    document.querySelectorAll('.story-video').forEach(function (el) {
+      el.addEventListener('click', function () { loadVideo(el); });
+      el.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); loadVideo(el); }
+      });
+    });
+  })();
+</script>
+
+<div class="accent-bar"></div>
+
+<!-- ── TRANSFORMATION ── -->
+<section class="transform" id="waitlist">
+  <div class="transform-inner">
+    <div class="transform-label">The Outcome</div>
+    <h2 class="transform-headline">Students strengthen reading skills<br>and gain confidence as learners.</h2>
+    <p class="transform-body">The ReadMix is currently in pilot. Join the waitlist to be first in line when we launch and follow our mission to help students close reading gaps and unlock their genius.</p>
+    <form class="waitlist-form" id="waitlistForm" novalidate>
+      <input type="email" name="email" class="waitlist-input" placeholder="you@email.com" aria-label="Email address" autocomplete="email" required>
+      <button type="submit" class="btn-white">Join the Waitlist</button>
+    </form>
+    <p class="waitlist-msg" id="waitlistMsg" role="status" aria-live="polite"></p>
+  </div>
+</section>
+
+<script>
+  // ── WAITLIST FORM ──
+  // To connect: create a Google Form with a single short-answer "Email" question,
+  // then paste the two values below (see the README / chat instructions).
+  (function () {
+    var CONFIG = {
+      formAction: 'https://docs.google.com/forms/d/e/1FAIpQLSeyco14aMIMw0HmhoNN2xtYf1ma4uEWEgLXxlaKgOYEjNgU9w/formResponse',
+      emailField: 'entry.1489258863'
+    };
+    var form = document.getElementById('waitlistForm');
+    var msg = document.getElementById('waitlistMsg');
+    if (!form) return;
+    function setMsg(text, isError) {
+      msg.textContent = text;
+      msg.className = 'waitlist-msg' + (isError ? ' error' : '');
+    }
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var email = form.email.value.trim();
+      if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
+        setMsg('Please enter a valid email address.', true);
+        return;
+      }
+      if (CONFIG.formAction.indexOf('PASTE') === 0) {
+        setMsg('Waitlist isn\'t connected yet — check back soon.', true);
+        return;
+      }
+      var data = new FormData();
+      data.append(CONFIG.emailField, email);
+      var btn = form.querySelector('button');
+      btn.disabled = true;
+      fetch(CONFIG.formAction, { method: 'POST', mode: 'no-cors', body: data })
+        .catch(function () {})
+        .then(function () {
+          form.reset();
+          btn.disabled = false;
+          setMsg("You're on the list! We'll be in touch. 🎉", false);
+        });
+    });
+  })();
+</script>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <a href="#" class="footer-wm" style="color:#000;">
+    <span style="color:#000;">The </span><span class="wm-read">Read</span><span class="wm-mix">Mix</span><sup class="wm-tm" style="color:var(--muted);">™</sup>
+  </a>
+  <div class="footer-links">
+    <a href="#story" class="footer-link">Our Story</a>
+    <a href="#research" class="footer-link">Research</a>
+    <a href="#waitlist" class="footer-link">Join Waitlist</a>
+  </div>
+  <div class="footer-copy">© 2026 The ReadMix · All rights reserved</div>
+</footer>
+
+</body>
+</html>
