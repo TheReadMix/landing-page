@@ -260,16 +260,6 @@ nav {
 }
 
 /* ── STAKES ── */
-.stakes {
-  background: #F5F5F3;
-  padding: 5rem 3rem;
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-}
-.stakes-inner {
-  max-width: 1100px;
-  margin: 0 auto;
-}
 .section-label {
   font-size: 10px;
   letter-spacing: 0.25em;
@@ -278,43 +268,6 @@ nav {
   font-weight: 600;
   margin-bottom: 1rem;
 }
-.stakes-headline {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-weight: 800;
-  font-size: clamp(32px, 5vw, 52px);
-  line-height: 1.05;
-  margin-bottom: 3rem;
-  max-width: 600px;
-  color: #0a0a0a;
-}
-.stakes-headline span { color: var(--red); }
-.stakes-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1px;
-  background: var(--border);
-  border: 1px solid var(--border);
-  border-radius: 6px;
-  overflow: hidden;
-}
-.stake-card {
-  background: #FFFFFF;
-  padding: 2rem 1.75rem;
-}
-.stake-stat {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-weight: 800;
-  font-size: 52px;
-  color: var(--red);
-  line-height: 1;
-  margin-bottom: 0.5rem;
-}
-.stake-body {
-  font-size: 13px;
-  color: #555;
-  line-height: 1.6;
-}
-
 /* ── HOW IT WORKS ── */
 .how {
   padding: 6rem 3rem;
@@ -455,32 +408,9 @@ nav {
   gap: 3rem;
   align-items: center;
 }
-.story-photo {
-  aspect-ratio: 4/5;
-  background: #F0F0EE;
-  border-radius: 8px;
-  border: 1px solid #E0E0DC;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-}
-.story-photo img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: top center;
-  display: block;
-}
-.story-photo img:not([src]), .story-photo img[src=""] {
-  display: none;
-}
-.story-photo-label {
-  font-size: 10px;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--muted);
-  font-weight: 600;
+.story-grid--solo {
+  grid-template-columns: 1fr;
+  max-width: 640px;
 }
 .story-headline {
   font-family: 'Barlow Condensed', sans-serif;
@@ -573,37 +503,6 @@ nav {
 }
 .story-video.playing::before,
 .story-video.playing .play-btn { display: none; }
-
-/* ── CREDIBILITY ── */
-.cred {
-  padding: 4rem 3rem;
-  max-width: 1100px;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  gap: 3rem;
-  flex-wrap: wrap;
-}
-.cred-label {
-  font-size: 10px;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--muted);
-  font-weight: 600;
-  flex-shrink: 0;
-}
-.cred-divider { width: 1px; height: 40px; background: var(--border); flex-shrink: 0; }
-.cred-item {
-  font-size: 11px;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  font-weight: 700;
-  color: #aaa;
-  border: 0.5px solid var(--border);
-  padding: 8px 18px;
-  border-radius: 3px;
-}
-.cred-item.active { color: #111; border-color: rgba(255,255,255,0.25); }
 
 /* ── TRANSFORMATION ── */
 .transform {
@@ -713,9 +612,7 @@ footer {
 @media (max-width: 768px) {
   nav { padding: 0 1.5rem; }
   .nav-links { gap: 1.25rem; }
-  .stakes-grid, .how-steps, .why-grid, .story-grid { grid-template-columns: 1fr; }
-  .cred { flex-direction: column; align-items: flex-start; }
-  .cred-divider { display: none; }
+  .how-steps, .why-grid, .story-grid { grid-template-columns: 1fr; }
   footer { flex-direction: column; align-items: flex-start; }
 }
 
@@ -729,8 +626,8 @@ footer {
   .hero-desc { max-width: 100%; }
   .hero-cta-row { width: 100%; }
   .hero-cta-row a { flex: 1 1 auto; text-align: center; }
-  .stakes, .how, .why, .story, .cred, .transform { padding-left: 1.5rem; padding-right: 1.5rem; }
-  .stakes-headline, .how-headline, .why-headline { font-size: clamp(28px, 8vw, 40px); }
+  .how, .why, .story, .transform { padding-left: 1.5rem; padding-right: 1.5rem; }
+  .how-headline, .why-headline { font-size: clamp(28px, 8vw, 40px); }
 }
 </style>
 </head>
@@ -775,28 +672,6 @@ footer {
 
 <div class="accent-bar"></div>
 
-<!-- ── STAKES ── -->
-<section class="stakes">
-  <div class="stakes-inner">
-    <div class="section-label">The Stakes</div>
-    <h2 class="stakes-headline">Struggling readers don't need sympathy. <span>They need a system that works.</span></h2>
-    <div class="stakes-grid">
-      <div class="stake-card">
-        <div class="stake-stat">2 in 3</div>
-        <div class="stake-body">Middle and high schoolers nationwide read below grade level — and most intervention programs aren't built for who they are.</div>
-      </div>
-      <div class="stake-card">
-        <div class="stake-stat">4x</div>
-        <div class="stake-body">Students who aren't reading proficiently by third grade are up to four times more likely to leave school without a diploma.</div>
-      </div>
-      <div class="stake-card">
-        <div class="stake-stat">1 in 5</div>
-        <div class="stake-body">Students show signs of a specific learning difference like dyslexia. Most go undiagnosed — and unsupported — for years.</div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- ── HOW IT WORKS ── -->
 <section class="how" id="how">
   <div class="how-header">
@@ -809,20 +684,20 @@ footer {
     <div class="step">
       <div class="step-num">01</div>
       <div class="step-icon"></div>
-      <div class="step-title">Assessment</div>
-      <div class="step-body">Diagnose skill gaps and let students self-identify their interests and culture. Meet them exactly where they are.</div>
+      <div class="step-title">Deep Assessment</div>
+      <div class="step-body">We diagnose the root cause of reading struggles by assessing foundational skills like phonological awareness and phonics, not just vocabulary and comprehension.</div>
     </div>
     <div class="step">
       <div class="step-num">02</div>
       <div class="step-icon"></div>
       <div class="step-title">Learning Plan</div>
-      <div class="step-body">Create a tailored learning roadmap with targeted word lists and reading passages to build foundational skills that stick.</div>
+      <div class="step-body">We create a tailored learning roadmap with targeted word lists and reading passages to build foundational skills that stick.</div>
     </div>
     <div class="step">
       <div class="step-num">03</div>
       <div class="step-icon"></div>
-      <div class="step-title">Lessons</div>
-      <div class="step-body">Engage in video-guided structured literacy instruction with exercises that drive measurable, reportable growth.</div>
+      <div class="step-title">Instruction</div>
+      <div class="step-body">Engage in teacher-led, structured literacy instruction supported by video, with exercises that drive measurable growth.</div>
     </div>
   </div>
 </section>
@@ -851,18 +726,11 @@ footer {
 
 <!-- ── OUR STORY ── -->
 <section class="story" id="story">
-  <div class="story-grid">
-    <div class="story-photo">
-      <picture>
-        <source srcset="assets/founder-romane.webp" type="image/webp">
-        <img src="assets/founder-romane.jpg" alt="Romane Armand, Founder &amp; Reading Specialist" onerror="this.removeAttribute('src'); this.closest('.story-photo').querySelector('.story-photo-label').style.display='block';">
-      </picture>
-      <div class="story-photo-label" style="display:none;">Founder Photo</div>
-    </div>
+  <div class="story-grid story-grid--solo">
     <div>
       <div class="section-label">From The Founder</div>
       <h2 class="story-headline">A record-breaker who almost <span>never learned to read.</span></h2>
-      <p class="story-body">Before The ReadMix was a curriculum, it was a kid who couldn't keep up — until the right system, at the right moment, changed everything. That experience became the blueprint for a literacy program built for students who learn differently, live loudly, and deserve a system that meets them where they are.</p>
+      <p class="story-body">Before The ReadMix was a curriculum, it was a way for a functionally illiterate high school kid to play with words and escape the boredom of not being able to access grade level text. This personal breakthrough became the blueprint for a literacy program built for students who learn differently, love creativity, and deserve lessons that meet them where they are.</p>
       <div class="story-name">Romane Armand</div>
       <div class="story-role">Founder &amp; Reading Specialist</div>
 
@@ -903,16 +771,6 @@ footer {
     });
   })();
 </script>
-
-<!-- ── CREDIBILITY ── -->
-<section class="cred">
-  <div class="cred-label">Built On</div>
-  <div class="cred-divider"></div>
-  <div class="cred-item active">Science of Reading</div>
-  <div class="cred-item active">Orton-Gillingham Aligned</div>
-  <div class="cred-item active">Student Co-Designed</div>
-  <div class="cred-item active">Culturally Responsive</div>
-</section>
 
 <div class="accent-bar"></div>
 
