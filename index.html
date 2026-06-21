@@ -266,6 +266,16 @@ nav {
 }
 
 /* ── STAKES ── */
+.stakes {
+  background: #F5F5F3;
+  padding: 5rem 3rem;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.stakes-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
 .section-label {
   font-size: 10px;
   letter-spacing: 0.25em;
@@ -273,6 +283,48 @@ nav {
   color: var(--muted);
   font-weight: 600;
   margin-bottom: 1rem;
+}
+.stakes-headline {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 800;
+  font-size: clamp(32px, 5vw, 52px);
+  line-height: 1.05;
+  margin-bottom: 3rem;
+  max-width: 640px;
+  color: #0a0a0a;
+}
+.stakes-headline span { color: var(--red); }
+.stakes-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  overflow: hidden;
+}
+.stake-card {
+  background: #FFFFFF;
+  padding: 2rem 1.75rem;
+}
+.stake-stat {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 800;
+  font-size: 52px;
+  color: var(--red);
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+.stake-body {
+  font-size: 13px;
+  color: #555;
+  line-height: 1.6;
+}
+.stake-source {
+  display: block;
+  font-size: 10.5px;
+  color: var(--muted);
+  margin-top: 0.75rem;
 }
 /* ── HOW IT WORKS ── */
 .how {
@@ -648,7 +700,7 @@ footer {
 @media (max-width: 768px) {
   nav { padding: 0 1.5rem; }
   .nav-links { gap: 1.25rem; }
-  .how-steps, .why-grid, .story-grid { grid-template-columns: 1fr; }
+  .stakes-grid, .how-steps, .why-grid, .story-grid { grid-template-columns: 1fr; }
   footer { flex-direction: column; align-items: flex-start; }
 }
 
@@ -662,7 +714,7 @@ footer {
   .hero-desc { max-width: 100%; }
   .hero-cta-row { width: 100%; }
   .hero-cta-row a { flex: 1 1 auto; text-align: center; }
-  .how, .why, .story, .transform { padding-left: 1.5rem; padding-right: 1.5rem; }
+  .stakes, .how, .why, .story, .transform { padding-left: 1.5rem; padding-right: 1.5rem; }
   .how-headline, .why-headline { font-size: clamp(28px, 8vw, 40px); }
 }
 </style>
@@ -702,6 +754,36 @@ footer {
              style="width: 100%; height: auto; display: block;"
              alt="Confident, engaged, thriving student">
       </picture>
+    </div>
+  </div>
+</section>
+
+<div class="accent-bar"></div>
+
+<!-- ── STAKES ── -->
+<section class="stakes">
+  <div class="stakes-inner">
+    <div class="section-label">The Stakes</div>
+    <h2 class="stakes-headline">Without the right intervention, struggling readers don't catch up. <span>They fall further behind.</span></h2>
+    <div class="stakes-grid">
+      <div class="stake-card">
+        <div class="stake-stat">63%</div>
+        <div class="stake-body">Students who scored "below basic" in 3rd-grade reading make up 63% of all students who never earn a high school diploma.
+          <span class="stake-source">Source: Annie E. Casey Foundation, 2011</span>
+        </div>
+      </div>
+      <div class="stake-card">
+        <div class="stake-stat">34%</div>
+        <div class="stake-body">Only 30% of 8th graders nationwide read proficiently — and 34% scored "below basic," the highest share in NAEP's 32-year testing history.
+          <span class="stake-source">Source: NAEP / Nation's Report Card, 2024</span>
+        </div>
+      </div>
+      <div class="stake-card">
+        <div class="stake-stat">1 in 5</div>
+        <div class="stake-body">Roughly 1 in 5 students have dyslexia — the most common cause of reading difficulty, and one of the most under-diagnosed learning differences in schools.
+          <span class="stake-source">Source: Yale Center for Dyslexia &amp; Creativity</span>
+        </div>
+      </div>
     </div>
   </div>
 </section>
